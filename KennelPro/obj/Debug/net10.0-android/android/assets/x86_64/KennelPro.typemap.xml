@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="KennelPro" mvid="ad16f2866e244730aa6237d04410bcdc">
+  <java-to-managed>
+    <entry java-name="crc6438cb9a20e43a5cba/MainActivity" managed-name="KennelPro.MainActivity, KennelPro" managed-type-token-id="33554441" />
+    <entry java-name="crc6438cb9a20e43a5cba/MainApplication" managed-name="KennelPro.MainApplication, KennelPro" managed-type-token-id="33554442" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc6438cb9a20e43a5cba/MainActivity" managed-name="KennelPro.MainActivity, KennelPro" managed-type-token-id="33554441" />
+    <entry java-name="crc6438cb9a20e43a5cba/MainApplication" managed-name="KennelPro.MainApplication, KennelPro" managed-type-token-id="33554442" />
+  </managed-to-java>
+</api>

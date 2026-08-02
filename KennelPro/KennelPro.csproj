@@ -1,0 +1,108 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net10.0-android;net10.0-windows10.0.19041.0</TargetFrameworks>
+        <AndroidSdkDirectory>C:\Users\Asus\AppData\Local\Android\Sdk</AndroidSdkDirectory>
+
+        <OutputType>Exe</OutputType>
+        <RootNamespace>KennelPro</RootNamespace>
+        <UseMaui>true</UseMaui>
+        <SingleProject>true</SingleProject>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!-- Enable XAML source generation for faster build times and improved performance. -->
+        <MauiXamlInflator>SourceGen</MauiXamlInflator>
+
+        <!-- Display name -->
+        <ApplicationTitle>KennelPro</ApplicationTitle>
+
+        <!-- App Identifier -->
+        <ApplicationId>com.companyname.kennelpro</ApplicationId>
+
+        <!-- Versions -->
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationVersion>1</ApplicationVersion>
+
+        <!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
+        <WindowsPackageType>None</WindowsPackageType>
+
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+        <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- App Icon -->
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4"/>
+
+        <!-- Splash Screen -->
+        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128"/>
+
+        <!-- Images -->
+        <MauiImage Include="Resources\Images\*"/>
+        <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185"/>
+
+        <!-- Custom Fonts -->
+        <MauiFont Include="Resources\Fonts\*"/>
+
+        <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.10">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.10" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.10">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="AI\" />
+      <Folder Include="Assets\Fonts\" />
+      <Folder Include="Assets\Icons\" />
+      <Folder Include="Assets\Images\" />
+      <Folder Include="Assets\Splash\" />
+      <Folder Include="bin\Debug\net10.0-windows10.0.19041.0\win-x64\" />
+      <Folder Include="Converters\" />
+      <Folder Include="Data\Configurations\" />
+      <Folder Include="Data\Migrations\" />
+      <Folder Include="Data\Repositories\" />
+      <Folder Include="Data\Seed\" />
+      <Folder Include="Helpers\" />
+      <Folder Include="Pages\Authentication\" />
+      <Folder Include="Pages\Dashboard\" />
+      <Folder Include="Pages\Documents\" />
+      <Folder Include="Pages\Dogs\" />
+      <Folder Include="Pages\Litters\" />
+      <Folder Include="Pages\Medical\" />
+      <Folder Include="Pages\Profile\" />
+      <Folder Include="Services\Authentication\" />
+      <Folder Include="Services\Backup\" />
+      <Folder Include="Services\Breeds\" />
+      <Folder Include="Services\Email\" />
+      <Folder Include="Services\Export\" />
+      <Folder Include="Services\Notifications\" />
+      <Folder Include="Services\Storage\" />
+      <Folder Include="Utils\" />
+      <Folder Include="Validators\" />
+      <Folder Include="ViewModels\Authentication\" />
+      <Folder Include="ViewModels\Dashboard\" />
+      <Folder Include="ViewModels\Documents\" />
+      <Folder Include="ViewModels\Dogs\" />
+      <Folder Include="ViewModels\Litters\" />
+      <Folder Include="ViewModels\Medical\" />
+      <Folder Include="ViewModels\Profile\" />
+    </ItemGroup>
+
+</Project>
