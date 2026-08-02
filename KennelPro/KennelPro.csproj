@@ -77,7 +77,6 @@
       <Folder Include="Converters\" />
       <Folder Include="Data\Configurations\" />
       <Folder Include="Data\Migrations\" />
-      <Folder Include="Data\Repositories\" />
       <Folder Include="Data\Seed\" />
       <Folder Include="Helpers\" />
       <Folder Include="Pages\Authentication\" />
@@ -87,13 +86,7 @@
       <Folder Include="Pages\Litters\" />
       <Folder Include="Pages\Medical\" />
       <Folder Include="Pages\Profile\" />
-      <Folder Include="Services\Authentication\" />
-      <Folder Include="Services\Backup\" />
-      <Folder Include="Services\Breeds\" />
-      <Folder Include="Services\Email\" />
-      <Folder Include="Services\Export\" />
-      <Folder Include="Services\Notifications\" />
-      <Folder Include="Services\Storage\" />
+      <Folder Include="Services\AI\" />
       <Folder Include="Utils\" />
       <Folder Include="Validators\" />
       <Folder Include="ViewModels\Authentication\" />
