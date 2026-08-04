@@ -1,26 +1,9 @@
-using System.Security.Cryptography;
-using System.Text;
+namespace KennelPro.Services.Pdf;
 
-namespace KennelPro.Services.Authentication;
-
-public class PasswordService
+public class PdfService
 {
-    public string HashPassword(string password)
+    public async Task<byte[]> CreatePdfAsync()
     {
-        using SHA256 sha256 = SHA256.Create();
-
-        byte[] bytes = Encoding.UTF8.GetBytes(password);
-
-        byte[] hash = sha256.ComputeHash(bytes);
-
-        return Convert.ToBase64String(hash);
-    }
-
-
-    public bool VerifyPassword(string password, string hashedPassword)
-    {
-        string hash = HashPassword(password);
-
-        return hash == hashedPassword;
+        return await Task.FromResult(Array.Empty<byte>());
     }
 }
