@@ -1,55 +1,137 @@
 # KennelPro
 
-Professional cross-platform dog kennel management application built with .NET MAUI.
+Professional cross-platform dog kennel management system built with .NET MAUI.
+
+---
 
 ## About
 
-KennelPro is a modern application designed for dog breeders and kennel owners. It helps manage dogs, litters, medical records, documents, and breeding activities in one place.
+KennelPro is a modern management system for professional dog breeders, kennel owners, and pet owners.
 
-## Features
+The application combines kennel management, dog records, breeding management, medical history, documents, cloud synchronization, and future AI features into a single ecosystem.
 
-- 🐶 Dog management
+The project is designed using Clean Architecture principles with Repository Pattern, Dependency Injection, Entity Framework Core, and SQLite.
+
+---
+
+## Current Features
+
+### Core
 - 🏡 Kennel management
+- 🐶 Dog management
+- 🐾 Litters & puppies
+- 🧬 Breeding management
+- ♀ Heat cycle tracking
 - 🩺 Medical records
-- 💉 Vaccination tracking
-- 🧬 Breeding & heat cycles
-- 🐾 Litters and puppies
-- 📄 Documents and titles
-- 🔔 Notifications & reminders
-- 🔐 User authentication
-- 📱 Cross-platform (.NET MAUI)
+- 💉 Vaccinations
+- 💊 Parasite treatments
+- 📄 Documents
+- 🏆 Titles
+- 🔔 Notifications
 
-## Technologies
+### Infrastructure
+- ✅ Entity Framework Core
+- ✅ SQLite database
+- ✅ Repository Pattern
+- ✅ Dependency Injection
+- ✅ Service Layer
+- ✅ Validators
+- ✅ Helper classes
+- ✅ API infrastructure
+- ✅ Authentication infrastructure
+
+---
+
+## Technology Stack
 
 - .NET 10
 - .NET MAUI
+- C#
 - Entity Framework Core
 - SQLite
-- MVVM
 - Dependency Injection
+- Repository Pattern
+- MVVM Architecture
+- HttpClient
+
+---
+
+## Project Structure
+
+- Database Layer
+- Repository Layer
+- Service Layer
+- Models
+- Validators
+- Helpers
+- ViewModels
+- Pages
+- API Services
+
+---
 
 ## Project Status
 
-🚧 Under active development.
+🚧 **Active Development**
 
-Current version: **v0.1.0**
+The architecture of the application is nearly completed.
+
+The current focus is implementing:
+
+- Authentication
+- User Interface (MVVM)
+- Dog API integration
+- Cloud synchronization
+- Backup & Restore
+- AI Assistant
+
+---
 
 ## Roadmap
 
-- [x] Project structure
-- [x] Database models
-- [x] Entity Framework Core
-- [x] SQLite integration
-- [ ] Repository pattern
-- [ ] Services
-- [ ] Authentication
-- [ ] Dog management
-- [ ] Medical module
-- [ ] Litters
-- [ ] Documents
-- [ ] Notifications
-- [ ] AI Assistant
+### ✅ Completed
+
+- Project architecture
+- Database models
+- Entity Framework Core
+- SQLite integration
+- Repository pattern
+- Dependency Injection
+- Service layer
+- Validators
+- Helper classes
+- API infrastructure
+
+### 🚧 In Progress
+
+- Authentication
+- MVVM
+- User Interface
+- Dog API
+- Settings
+- Notifications
+
+### 📅 Planned
+
+- Cloud synchronization
+- Backup & Restore
+- QR codes
+- PDF Export
+- Mobile optimization
+- AI Assistant
+- Veterinary cabinet
+- Multi-language support
+
+---
+
+## Version
+
+Current version:
+
+**v0.2.0-alpha**
+
+---
 
 ## License
 
-Copyright © 2026 KennelPro. All rights reserved.
+MIT License
