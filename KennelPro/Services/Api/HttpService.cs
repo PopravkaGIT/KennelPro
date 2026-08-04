@@ -17,7 +17,11 @@ public class HttpService
         {
             return await _httpClient.GetFromJsonAsync<T>(url);
         }
-        catch
+        catch (HttpRequestException)
+        {
+            return default;
+        }
+        catch (TaskCanceledException)
         {
             return default;
         }
@@ -29,7 +33,11 @@ public class HttpService
         {
             return await _httpClient.GetStringAsync(url);
         }
-        catch
+        catch (HttpRequestException)
+        {
+            return null;
+        }
+        catch (TaskCanceledException)
         {
             return null;
         }

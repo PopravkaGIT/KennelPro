@@ -1,4 +1,4 @@
-using KennelPro.Services.Api;
+using System.Net.Http.Json;
 
 namespace KennelPro.Services.Api;
 
@@ -11,9 +11,29 @@ public class DogApiService
         _httpService = httpService;
     }
 
-    public async Task<string?> GetBreedsAsync()
+    public async Task<string> GetBreedDescriptionAsync(string breedName)
     {
-        return await _httpService.GetStringAsync(
-            "https://dog.ceo/api/breeds/list/all");
+        // TODO: Подключить реальное API
+        await Task.Delay(1);
+
+        return $"Описание породы {breedName}";
+    }
+
+    public async Task<List<string>> GetBreedImagesAsync(string breedName)
+    {
+        // TODO: Подключить API фотографий
+
+        await Task.Delay(1);
+
+        return new List<string>();
+    }
+
+    public async Task<List<string>> GetBreedCharacteristicsAsync(string breedName)
+    {
+        // TODO: Подключить API характеристик
+
+        await Task.Delay(1);
+
+        return new List<string>();
     }
 }
