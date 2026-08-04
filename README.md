@@ -197,4 +197,12 @@ The long-term goal is to provide one modern platform for:
 
 # 📜 License
 
-MIT License
+KennelPro is a **Source-Available commercial project**.
+
+The source code is publicly available for viewing and educational purposes.
+
+Commercial use, redistribution, resale, or creating competing products based on this software is prohibited without permission.
+
+All rights reserved.
+
+See [LICENSE](LICENSE) for details.
