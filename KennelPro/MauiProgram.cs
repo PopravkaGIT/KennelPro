@@ -1,4 +1,4 @@
-﻿using KennelPro.Data.Database;
+using KennelPro.Data.Database;
 using KennelPro.Data.Repositories.Authentication;
 using KennelPro.Data.Repositories.Dogs;
 using KennelPro.Data.Repositories.Documents;
@@ -7,6 +7,7 @@ using KennelPro.Data.Repositories.Litters;
 using KennelPro.Data.Repositories.Medical;
 using KennelPro.Data.Repositories.Notifications;
 using KennelPro.Data.Repositories.Reproduction;
+using KennelPro.Data.Seed;
 using KennelPro.Interfaces.Authentication;
 using KennelPro.Interfaces.Dogs;
 using KennelPro.Interfaces.Documents;
@@ -34,6 +35,15 @@ using KennelPro.Services.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using KennelPro.ViewModels.Authentication;
+using KennelPro.ViewModels.Dogs;
+using KennelPro.ViewModels.Medical;
+using KennelPro.ViewModels.Reproduction;
+
+using KennelPro.Pages.Authentication;
+using KennelPro.Pages.Dogs;
+using KennelPro.Pages.Medical;
+using KennelPro.Pages.Reproduction;
 
 namespace KennelPro;
 
@@ -62,6 +72,47 @@ public static class MauiProgram
                 $"Data Source={dbPath}");
         });
 
+        // ViewModels
+        builder.Services.AddTransient<LoginViewModel>();
+        builder.Services.AddTransient<RegisterViewModel>();
+
+        builder.Services.AddTransient<DogListViewModel>();
+        builder.Services.AddTransient<DogEditViewModel>();
+        builder.Services.AddTransient<DogDetailsViewModel>();
+        builder.Services.AddTransient<MedicalHubViewModel>();
+        builder.Services.AddTransient<MedicalRecordListViewModel>();
+        builder.Services.AddTransient<MedicalRecordEditViewModel>();
+        builder.Services.AddTransient<VaccinationListViewModel>();
+        builder.Services.AddTransient<VaccinationEditViewModel>();
+        builder.Services.AddTransient<ParasiteTreatmentListViewModel>();
+        builder.Services.AddTransient<ParasiteTreatmentEditViewModel>();
+        builder.Services.AddTransient<MedicationListViewModel>();
+        builder.Services.AddTransient<MedicationEditViewModel>();
+        builder.Services.AddTransient<DiseaseListViewModel>();
+        builder.Services.AddTransient<DiseaseEditViewModel>();
+        builder.Services.AddTransient<ReproductionViewModel>();
+        builder.Services.AddTransient<ReproductionCrudViewModel>();
+        // Pages
+        builder.Services.AddTransient<LoginPage>();
+        builder.Services.AddTransient<RegisterPage>();
+        builder.Services.AddTransient<MainPage>();
+
+        builder.Services.AddTransient<DogsPage>();
+        builder.Services.AddTransient<DogEditPage>();
+        builder.Services.AddTransient<DogDetailsPage>();
+        builder.Services.AddTransient<MedicalHubPage>();
+        builder.Services.AddTransient<MedicalRecordListPage>();
+        builder.Services.AddTransient<MedicalRecordEditPage>();
+        builder.Services.AddTransient<VaccinationListPage>();
+        builder.Services.AddTransient<VaccinationEditPage>();
+        builder.Services.AddTransient<ParasiteTreatmentListPage>();
+        builder.Services.AddTransient<ParasiteTreatmentEditPage>();
+        builder.Services.AddTransient<MedicationListPage>();
+        builder.Services.AddTransient<MedicationEditPage>();
+        builder.Services.AddTransient<DiseaseListPage>();
+        builder.Services.AddTransient<DiseaseEditPage>();
+        builder.Services.AddTransient<ReproductionPage>();
+        builder.Services.AddTransient<ReproductionCrudPage>();
         // Authentication
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IVerificationCodeRepository, VerificationCodeRepository>();
@@ -119,11 +170,14 @@ public static class MauiProgram
         builder.Services.AddScoped<MedicalService>();
         builder.Services.AddScoped<VaccinationService>();
         builder.Services.AddScoped<ParasiteService>();
+        builder.Services.AddScoped<MedicationService>();
+        builder.Services.AddScoped<DiseaseService>();
 
         // Reproduction
         builder.Services.AddScoped<HeatCycleService>();
         builder.Services.AddScoped<MatingService>();
         builder.Services.AddScoped<LitterService>();
+        builder.Services.AddScoped<PuppyService>();
 
         // Notifications
         builder.Services.AddScoped<NotificationService>();
@@ -160,6 +214,24 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
-        return builder.Build();
+        var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger<AppDbContext>>();
+            try
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                db.Database.Migrate();
+                BreedSeed.EnsureDefaultBreedsAsync(db).GetAwaiter().GetResult();
+            }
+            catch (Exception exception)
+            {
+                logger.LogError(exception, "Unable to migrate the KennelPro database at {DatabasePath}.",
+                    Path.Combine(FileSystem.AppDataDirectory, "KennelPro.db"));
+            }
+        }
+
+        return app;
     }
 }

@@ -6,6 +6,8 @@ public interface IDiseaseRepository
 {
     Task<List<Disease>> GetAllAsync();
 
+    Task<IEnumerable<Disease>> GetByDogIdAsync(Guid dogId);
+
     Task<Disease?> GetByIdAsync(Guid id);
 
     Task AddAsync(Disease disease);

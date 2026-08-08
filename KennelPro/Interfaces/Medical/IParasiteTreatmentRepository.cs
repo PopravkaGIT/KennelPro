@@ -6,6 +6,8 @@ public interface IParasiteTreatmentRepository
 {
     Task<List<ParasiteTreatment>> GetAllAsync();
 
+    Task<IEnumerable<ParasiteTreatment>> GetByDogIdAsync(Guid dogId);
+
     Task<ParasiteTreatment?> GetByIdAsync(Guid id);
 
     Task AddAsync(ParasiteTreatment treatment);

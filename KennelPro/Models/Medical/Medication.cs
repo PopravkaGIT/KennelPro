@@ -18,5 +18,14 @@ public class Medication
     public string? Description { get; set; }
 
 
+    public string? Dosage { get; set; }
+
+    public string? Frequency { get; set; }
+
+    public DateTime StartDate { get; set; } = DateTime.UtcNow;
+
+    public DateTime? EndDate { get; set; }
+
+    // Kept for compatibility with databases created before Phase 3.
     public DateTime Date { get; set; }
 }

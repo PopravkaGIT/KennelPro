@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:KennelPro.ViewModels.Medical" x:Class="KennelPro.Pages.Medical.VaccinationEditPage" x:DataType="vm:VaccinationEditViewModel" Title="{Binding PageTitle}">
+    <ScrollView><VerticalStackLayout Padding="16" Spacing="16">
+        <Label Text="Vaccine name" FontSize="16"/><Entry Text="{Binding Name}" Placeholder="For example, Nobivac" FontSize="18" HeightRequest="52"/>
+        <Label Text="Vaccination date" FontSize="16"/><DatePicker Date="{Binding VaccinationDate}" FontSize="18" HeightRequest="52"/>
+        <HorizontalStackLayout Spacing="12"><Switch IsToggled="{Binding HasRevaccinationDate}"/><Label Text="Set revaccination date" FontSize="16" VerticalOptions="Center"/></HorizontalStackLayout>
+        <DatePicker Date="{Binding RevaccinationDate}" IsVisible="{Binding HasRevaccinationDate}" FontSize="18" HeightRequest="52"/>
+        <Button Text="Save" Command="{Binding SaveCommand}" FontSize="18" HeightRequest="52"/><Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="Transparent" TextColor="{StaticResource Primary}" FontSize="16" HeightRequest="48"/>
+    </VerticalStackLayout></ScrollView>
+</ContentPage>

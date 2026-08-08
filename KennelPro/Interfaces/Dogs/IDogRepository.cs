@@ -6,6 +6,8 @@ public interface IDogRepository
 {
     Task<List<Dog>> GetAllAsync();
 
+    Task<List<Dog>> GetByKennelIdAsync(Guid kennelId);
+
     Task<Dog?> GetByIdAsync(Guid id);
 
     Task AddAsync(Dog dog);

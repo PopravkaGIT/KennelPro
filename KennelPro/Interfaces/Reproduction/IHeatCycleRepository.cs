@@ -5,6 +5,7 @@ namespace KennelPro.Interfaces.Reproduction;
 public interface IHeatCycleRepository
 {
     Task<List<HeatCycle>> GetAllAsync();
+    Task<IEnumerable<HeatCycle>> GetByDogIdAsync(Guid dogId);
 
     Task<HeatCycle?> GetByIdAsync(Guid id);
 

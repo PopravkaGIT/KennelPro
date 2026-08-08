@@ -18,6 +18,7 @@ public class PuppyRepository : IPuppyRepository
     {
         return await _context.Puppies.ToListAsync();
     }
+    public async Task<IEnumerable<Puppy>> GetByLitterIdAsync(Guid litterId) => await _context.Puppies.Where(x => x.LitterId == litterId).OrderBy(x => x.Number).ToListAsync();
 
     public async Task<Puppy?> GetByIdAsync(Guid id)
     {

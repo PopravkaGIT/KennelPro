@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KennelPro.ViewModels.Medical"
+             x:Class="KennelPro.Pages.Medical.MedicalRecordEditPage"
+             x:DataType="vm:MedicalRecordEditViewModel"
+             Title="{Binding PageTitle}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Date" FontSize="16" />
+                <DatePicker Date="{Binding Date}" FontSize="18" HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Notes" FontSize="16" />
+                <Editor Text="{Binding Notes}" FontSize="18" HeightRequest="160" AutoSize="TextChanges" />
+            </VerticalStackLayout>
+
+            <Button Text="Save" Command="{Binding SaveCommand}" FontSize="18" HeightRequest="52" Margin="0,8,0,0" />
+            <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="Transparent" TextColor="{StaticResource Primary}" FontSize="16" HeightRequest="48" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

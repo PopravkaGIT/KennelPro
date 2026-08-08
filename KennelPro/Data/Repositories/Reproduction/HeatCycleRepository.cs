@@ -18,6 +18,7 @@ public class HeatCycleRepository : IHeatCycleRepository
     {
         return await _context.HeatCycles.ToListAsync();
     }
+    public async Task<IEnumerable<HeatCycle>> GetByDogIdAsync(Guid dogId) => await _context.HeatCycles.Where(x => x.DogId == dogId).OrderByDescending(x => x.StartDate).ToListAsync();
 
     public async Task<HeatCycle?> GetByIdAsync(Guid id)
     {

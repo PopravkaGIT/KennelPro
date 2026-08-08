@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KennelPro.ViewModels.Medical"
+             x:Class="KennelPro.Pages.Medical.MedicalHubPage"
+             x:DataType="vm:MedicalHubViewModel"
+             Title="Medical Card">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+
+            <Label
+                Text="{Binding DogName}"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="{StaticResource Primary}" />
+
+            <Label
+                Text="Select a section"
+                FontSize="16"
+                TextColor="{StaticResource Gray600}" />
+
+            <Border Stroke="{StaticResource Gray200}" Padding="16">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenRecordsCommand}" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Records" FontSize="20" FontAttributes="Bold" />
+                    <Label Text="Medical visit notes and history" FontSize="16" TextColor="{StaticResource Gray600}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="{StaticResource Gray200}" Padding="16">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenVaccinationsCommand}" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Vaccinations" FontSize="20" FontAttributes="Bold" />
+                    <Label Text="Vaccination schedule and revaccination dates" FontSize="16" TextColor="{StaticResource Gray600}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="{StaticResource Gray200}" Padding="16">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenParasitesCommand}" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Parasites" FontSize="20" FontAttributes="Bold" />
+                    <Label Text="Anti-parasite treatments and reminders" FontSize="16" TextColor="{StaticResource Gray600}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="{StaticResource Gray200}" Padding="16">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenMedicationsCommand}" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Medications" FontSize="20" FontAttributes="Bold" />
+                    <Label Text="Current and past medications" FontSize="16" TextColor="{StaticResource Gray600}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="{StaticResource Gray200}" Padding="16">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenDiseasesCommand}" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Diseases" FontSize="20" FontAttributes="Bold" />
+                    <Label Text="Diagnoses, symptoms and recovery status" FontSize="16" TextColor="{StaticResource Gray600}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button
+                Text="Back"
+                Command="{Binding BackCommand}"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource Primary}"
+                FontSize="16"
+                HeightRequest="48"
+                Margin="0,8,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

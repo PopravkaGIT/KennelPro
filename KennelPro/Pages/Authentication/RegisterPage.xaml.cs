@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using KennelPro.ViewModels.Authentication;
 
 namespace KennelPro.Pages.Authentication;
 
 public partial class RegisterPage : ContentPage
 {
-    public RegisterPage()
+    public RegisterPage(RegisterViewModel viewModel)
     {
         InitializeComponent();
+        BindingContext = viewModel;
     }
 }

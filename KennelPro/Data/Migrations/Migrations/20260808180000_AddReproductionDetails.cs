@@ -1,0 +1,4 @@
+using Microsoft.EntityFrameworkCore.Migrations;
+#nullable disable
+namespace KennelPro.Migrations;
+public partial class AddReproductionDetails : Migration { protected override void Up(MigrationBuilder b) { b.AddColumn<DateTime>("EndDate","HeatCycles","TEXT",nullable:true); b.AddColumn<string>("Status","HeatCycles","TEXT",nullable:true); b.AddColumn<string>("Notes","Litters","TEXT",nullable:true); b.AddColumn<string>("Name","Puppies","TEXT",nullable:false,defaultValue:""); b.AddColumn<string>("ChipNumber","Puppies","TEXT",nullable:true); b.AddColumn<string>("PedigreeNumber","Puppies","TEXT",nullable:true); b.AddColumn<string>("Notes","Puppies","TEXT",nullable:true); } protected override void Down(MigrationBuilder b) { foreach(var c in new[]{"EndDate","Status"}) b.DropColumn(c,"HeatCycles"); foreach(var c in new[]{"Notes"}) b.DropColumn(c,"Litters"); foreach(var c in new[]{"Name","ChipNumber","PedigreeNumber","Notes"}) b.DropColumn(c,"Puppies"); } }

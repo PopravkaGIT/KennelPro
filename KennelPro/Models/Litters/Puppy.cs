@@ -15,6 +15,8 @@ public class Puppy
     // Номер внутри помета
     public int Number { get; set; }
 
+    public string Name { get; set; } = string.Empty;
+
 
     public Gender Gender { get; set; }
 
@@ -30,4 +32,10 @@ public class Puppy
 
 
     public DateTime BirthDate { get; set; }
+
+    public string? ChipNumber { get; set; }
+
+    public string? PedigreeNumber { get; set; }
+
+    public string? Notes { get; set; }
 }

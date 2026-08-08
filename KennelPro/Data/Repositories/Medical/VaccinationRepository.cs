@@ -19,6 +19,14 @@ public class VaccinationRepository : IVaccinationRepository
         return await _context.Vaccinations.ToListAsync();
     }
 
+    public async Task<IEnumerable<Vaccination>> GetByDogIdAsync(Guid dogId)
+    {
+        return await _context.Vaccinations
+            .Where(x => x.DogId == dogId)
+            .OrderByDescending(x => x.VaccinationDate)
+            .ToListAsync();
+    }
+
     public async Task<Vaccination?> GetByIdAsync(Guid id)
     {
         return await _context.Vaccinations.FirstOrDefaultAsync(x => x.Id == id);

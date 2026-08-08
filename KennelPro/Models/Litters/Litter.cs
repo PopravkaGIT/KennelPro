@@ -13,6 +13,8 @@ public class Litter
 
     public DateTime BirthDate { get; set; }
 
+    public string? Notes { get; set; }
+
 
     // Мать
     public Guid MotherDogId { get; set; }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KennelPro.ViewModels.Medical"
+             x:Class="KennelPro.Pages.Medical.MedicalRecordListPage"
+             x:DataType="vm:MedicalRecordListViewModel"
+             Title="Medical Records">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="12">
+
+        <Button
+            Grid.Row="0"
+            Text="Add Record"
+            Command="{Binding AddCommand}"
+            FontSize="18"
+            HeightRequest="52" />
+
+        <Button
+            Grid.Row="1"
+            Text="Back"
+            Command="{Binding BackCommand}"
+            BackgroundColor="Transparent"
+            TextColor="{StaticResource Primary}"
+            FontSize="16"
+            HeightRequest="48" />
+
+        <RefreshView
+            Grid.Row="2"
+            Command="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsBusy}">
+
+            <CollectionView ItemsSource="{Binding Items}" SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout Padding="24" Spacing="8">
+                        <Label Text="No records yet" FontSize="20" HorizontalOptions="Center" />
+                        <Label Text="Tap Add Record to create the first entry." FontSize="16" TextColor="{StaticResource Gray600}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:MedicalRecordListItem">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems Mode="Execute">
+                                    <SwipeItem Text="Edit" BackgroundColor="{StaticResource Primary}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditCommand}" CommandParameter="{Binding .}" />
+                                    <SwipeItem Text="Delete" BackgroundColor="#C62828" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Border Stroke="{StaticResource Gray200}" Padding="16" Margin="0,0,0,8">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditCommand}" CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="{Binding DateText}" FontSize="20" FontAttributes="Bold" />
+                                    <Label Text="{Binding NotesPreview}" FontSize="16" TextColor="{StaticResource Gray600}" LineBreakMode="TailTruncation" MaxLines="3" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

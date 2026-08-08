@@ -5,6 +5,7 @@ namespace KennelPro.Interfaces.Litters;
 public interface IPuppyRepository
 {
     Task<List<Puppy>> GetAllAsync();
+    Task<IEnumerable<Puppy>> GetByLitterIdAsync(Guid litterId);
 
     Task<Puppy?> GetByIdAsync(Guid id);
 

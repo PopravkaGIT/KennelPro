@@ -30,6 +30,7 @@ public static class LitterValidator
             error = "Father dog is required.";
             return false;
         }
+        if (litter.FatherDogId == litter.MotherDogId) { error = "Parents must be different dogs."; return false; }
 
         error = string.Empty;
         return true;

@@ -19,6 +19,14 @@ public class ParasiteTreatmentRepository : IParasiteTreatmentRepository
         return await _context.ParasiteTreatments.ToListAsync();
     }
 
+    public async Task<IEnumerable<ParasiteTreatment>> GetByDogIdAsync(Guid dogId)
+    {
+        return await _context.ParasiteTreatments
+            .Where(x => x.DogId == dogId)
+            .OrderByDescending(x => x.Date)
+            .ToListAsync();
+    }
+
     public async Task<ParasiteTreatment?> GetByIdAsync(Guid id)
     {
         return await _context.ParasiteTreatments.FirstOrDefaultAsync(x => x.Id == id);

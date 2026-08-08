@@ -18,6 +18,7 @@ public class MatingRepository : IMatingRepository
     {
         return await _context.Matings.ToListAsync();
     }
+    public async Task<IEnumerable<Mating>> GetByKennelIdAsync(Guid kennelId) => await _context.Matings.Include(x => x.FemaleDog).Include(x => x.MaleDog).Where(x => x.FemaleDog.KennelId == kennelId && x.MaleDog.KennelId == kennelId).OrderByDescending(x => x.Date).ToListAsync();
 
     public async Task<Mating?> GetByIdAsync(Guid id)
     {

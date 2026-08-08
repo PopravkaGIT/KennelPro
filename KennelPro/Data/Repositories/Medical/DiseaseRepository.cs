@@ -19,6 +19,14 @@ public class DiseaseRepository : IDiseaseRepository
         return await _context.Diseases.ToListAsync();
     }
 
+    public async Task<IEnumerable<Disease>> GetByDogIdAsync(Guid dogId)
+    {
+        return await _context.Diseases
+            .Where(x => x.DogId == dogId)
+            .OrderByDescending(x => x.StartDate)
+            .ToListAsync();
+    }
+
     public async Task<Disease?> GetByIdAsync(Guid id)
     {
         return await _context.Diseases.FirstOrDefaultAsync(x => x.Id == id);

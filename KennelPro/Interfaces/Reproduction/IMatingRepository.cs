@@ -5,6 +5,7 @@ namespace KennelPro.Interfaces.Reproduction;
 public interface IMatingRepository
 {
     Task<List<Mating>> GetAllAsync();
+    Task<IEnumerable<Mating>> GetByKennelIdAsync(Guid kennelId);
 
     Task<Mating?> GetByIdAsync(Guid id);
 

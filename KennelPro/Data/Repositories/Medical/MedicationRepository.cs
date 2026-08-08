@@ -19,6 +19,14 @@ public class MedicationRepository : IMedicationRepository
         return await _context.Medications.ToListAsync();
     }
 
+    public async Task<IEnumerable<Medication>> GetByDogIdAsync(Guid dogId)
+    {
+        return await _context.Medications
+            .Where(x => x.DogId == dogId)
+            .OrderByDescending(x => x.StartDate)
+            .ToListAsync();
+    }
+
     public async Task<Medication?> GetByIdAsync(Guid id)
     {
         return await _context.Medications.FirstOrDefaultAsync(x => x.Id == id);

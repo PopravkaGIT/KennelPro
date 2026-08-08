@@ -18,6 +18,7 @@ public class LitterRepository : ILitterRepository
     {
         return await _context.Litters.ToListAsync();
     }
+    public async Task<IEnumerable<Litter>> GetByKennelIdAsync(Guid kennelId) => await _context.Litters.Include(x => x.MotherDog).Include(x => x.FatherDog).Where(x => x.MotherDog.KennelId == kennelId && x.FatherDog.KennelId == kennelId).OrderByDescending(x => x.BirthDate).ToListAsync();
 
     public async Task<Litter?> GetByIdAsync(Guid id)
     {

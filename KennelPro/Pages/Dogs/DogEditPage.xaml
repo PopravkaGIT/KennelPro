@@ -2,8 +2,80 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KennelPro.Pages.Dogs.DogEditPage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+             xmlns:vm="clr-namespace:KennelPro.ViewModels.Dogs"
+             x:Class="KennelPro.Pages.Dogs.DogEditPage"
+             x:DataType="vm:DogEditViewModel"
+             Title="{Binding PageTitle}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Name" FontSize="16" />
+                <Entry Text="{Binding Name}" FontSize="18" HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Breed" FontSize="16" />
+                <Picker
+                    ItemsSource="{Binding Breeds}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedBreed}"
+                    FontSize="18"
+                    HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Gender" FontSize="16" />
+                <Picker
+                    ItemsSource="{Binding Genders}"
+                    SelectedItem="{Binding SelectedGender}"
+                    FontSize="18"
+                    HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Birth Date" FontSize="16" />
+                <DatePicker
+                    Date="{Binding BirthDate}"
+                    FontSize="18"
+                    HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Chip Number" FontSize="16" />
+                <Entry Text="{Binding ChipNumber}" FontSize="18" HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Pedigree" FontSize="16" />
+                <Entry Text="{Binding PedigreeNumber}" FontSize="18" HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Notes" FontSize="16" />
+                <Editor
+                    Text="{Binding Notes}"
+                    FontSize="18"
+                    HeightRequest="120"
+                    AutoSize="TextChanges" />
+            </VerticalStackLayout>
+
+            <Button
+                Text="Save"
+                Command="{Binding SaveCommand}"
+                FontSize="18"
+                HeightRequest="52"
+                Margin="0,8,0,0" />
+
+            <Button
+                Text="Cancel"
+                Command="{Binding CancelCommand}"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource Primary}"
+                FontSize="16"
+                HeightRequest="48" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

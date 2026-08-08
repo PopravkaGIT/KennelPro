@@ -19,4 +19,12 @@ public class Disease
 
 
     public string? Notes { get; set; }
+
+    public string? Symptoms { get; set; }
+
+    public DateTime StartDate { get; set; } = DateTime.UtcNow;
+
+    public DateTime? RecoveryDate { get; set; }
+
+    public string Status { get; set; } = "Active";
 }

@@ -1,15 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using KennelPro.ViewModels.Dogs;
 
 namespace KennelPro.Pages.Dogs;
 
 public partial class DogsPage : ContentPage
 {
-    public DogsPage()
+    private readonly DogListViewModel _viewModel;
+
+    public DogsPage(DogListViewModel viewModel)
     {
         InitializeComponent();
+        _viewModel = viewModel;
+        BindingContext = viewModel;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await _viewModel.LoadDogsAsync();
     }
 }

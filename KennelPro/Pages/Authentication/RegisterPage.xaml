@@ -2,8 +2,86 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KennelPro.Pages.Authentication.RegisterPage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+             xmlns:vm="clr-namespace:KennelPro.ViewModels.Authentication"
+             x:Class="KennelPro.Pages.Authentication.RegisterPage"
+             x:DataType="vm:RegisterViewModel"
+             Title="Create Account">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="24"
+            Spacing="16">
+
+            <Label
+                Text="Create Account"
+                FontSize="28"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource Primary}" />
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Your Name" FontSize="16" />
+                <Entry
+                    Text="{Binding Name}"
+                    Placeholder="Full name"
+                    FontSize="18"
+                    HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Email" FontSize="16" />
+                <Entry
+                    Text="{Binding Email}"
+                    Placeholder="your@email.com"
+                    Keyboard="Email"
+                    FontSize="18"
+                    HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Password" FontSize="16" />
+                <Entry
+                    Text="{Binding Password}"
+                    Placeholder="Password"
+                    IsPassword="True"
+                    FontSize="18"
+                    HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Confirm Password" FontSize="16" />
+                <Entry
+                    Text="{Binding ConfirmPassword}"
+                    Placeholder="Confirm password"
+                    IsPassword="True"
+                    FontSize="18"
+                    HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Kennel Name" FontSize="16" />
+                <Entry
+                    Text="{Binding KennelName}"
+                    Placeholder="Your kennel name"
+                    FontSize="18"
+                    HeightRequest="52" />
+            </VerticalStackLayout>
+
+            <Button
+                Text="Create Account"
+                Command="{Binding RegisterCommand}"
+                FontSize="18"
+                HeightRequest="52"
+                Margin="0,8,0,0" />
+
+            <Button
+                Text="Back to Sign In"
+                Command="{Binding GoToLoginCommand}"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource Primary}"
+                FontSize="16"
+                HeightRequest="48" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -2,8 +2,79 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KennelPro.Pages.Dogs.DogDetailsPage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+             xmlns:vm="clr-namespace:KennelPro.ViewModels.Dogs"
+             x:Class="KennelPro.Pages.Dogs.DogDetailsPage"
+             x:DataType="vm:DogDetailsViewModel"
+             Title="Dog Details">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+
+            <Label
+                Text="{Binding Name}"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="{StaticResource Primary}" />
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Breed" FontSize="14" TextColor="{StaticResource Gray600}" />
+                <Label Text="{Binding BreedName}" FontSize="18" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Gender" FontSize="14" TextColor="{StaticResource Gray600}" />
+                <Label Text="{Binding GenderText}" FontSize="18" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Birth Date" FontSize="14" TextColor="{StaticResource Gray600}" />
+                <Label Text="{Binding BirthDateText}" FontSize="18" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Chip Number" FontSize="14" TextColor="{StaticResource Gray600}" />
+                <Label Text="{Binding ChipNumber}" FontSize="18" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Pedigree" FontSize="14" TextColor="{StaticResource Gray600}" />
+                <Label Text="{Binding PedigreeNumber}" FontSize="18" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Notes" FontSize="14" TextColor="{StaticResource Gray600}" />
+                <Label Text="{Binding Notes}" FontSize="18" />
+            </VerticalStackLayout>
+
+            <Button
+                Text="Edit Dog"
+                Command="{Binding EditCommand}"
+                FontSize="18"
+                HeightRequest="52"
+                Margin="0,16,0,0" />
+
+            <Button
+                Text="Medical Card"
+                Command="{Binding MedicalCardCommand}"
+                FontSize="18"
+                HeightRequest="52" />
+            <Button Text="Reproduction" Command="{Binding ReproductionCommand}" FontSize="18" HeightRequest="52" />
+
+            <Button
+                Text="Delete Dog"
+                Command="{Binding DeleteCommand}"
+                BackgroundColor="#C62828"
+                FontSize="18"
+                HeightRequest="52" />
+
+            <Button
+                Text="Back"
+                Command="{Binding BackCommand}"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource Primary}"
+                FontSize="16"
+                HeightRequest="48" />
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

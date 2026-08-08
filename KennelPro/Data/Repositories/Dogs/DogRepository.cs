@@ -22,6 +22,16 @@ public class DogRepository : IDogRepository
             .ToListAsync();
     }
 
+    public async Task<List<Dog>> GetByKennelIdAsync(Guid kennelId)
+    {
+        return await _context.Dogs
+            .Include(d => d.Breed)
+            .Include(d => d.Kennel)
+            .Where(d => d.KennelId == kennelId)
+            .OrderBy(d => d.Name)
+            .ToListAsync();
+    }
+
     public async Task<Dog?> GetByIdAsync(Guid id)
     {
         return await _context.Dogs
