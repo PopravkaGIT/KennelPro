@@ -6,7 +6,7 @@
 [![.NET MAUI](https://img.shields.io/badge/.NET%20MAUI-Cross--Platform-512BD4?logo=dotnet&logoColor=white)](https://learn.microsoft.com/dotnet/maui/)
 [![C%23](https://img.shields.io/badge/C%23-Language-239120?logo=csharp&logoColor=white)](https://learn.microsoft.com/dotnet/csharp/)
 [![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
-[![Status](https://img.shields.io/badge/Status-v0.2.0--alpha-orange)](#-development-status)
+[![Status](https://img.shields.io/badge/Status-v0.3.0--alpha-orange)](#-development-status)
 
 ---
 
